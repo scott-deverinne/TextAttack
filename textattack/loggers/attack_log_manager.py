@@ -113,6 +113,18 @@ class AttackLogManager:
                 words_perturbed_stats["avg_word_perturbed"],
             ],
         ]
+        
+        with open('results.csv', 'wb') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            filewriter.writerow([attack_success_stats["successful_attacks"],
+                                 attack_success_stats["failed_attacks"],
+                                 str(attack_success_stats["original_accuracy"],
+                                 str(attack_success_stats["attack_accuracy_perc"],
+                                 str(attack_success_stats["attack_success_rate"],
+                                 str(words_perturbed_stats["avg_word_perturbed_perc"],
+                                 words_perturbed_stats["avg_word_perturbed"])
+        
 
         summary_table_rows.append(
             ["Avg num queries:", attack_query_stats["avg_num_queries"]]
