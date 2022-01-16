@@ -116,14 +116,24 @@ class AttackLogManager:
             ],
         ]
         
-        result_row = [attack_success_stats["successful_attacks"],
-         attack_success_stats["failed_attacks"],
-         str(attack_success_stats["original_accuracy"],
-         str(attack_success_stats["attack_accuracy_perc"],
-         str(attack_success_stats["attack_success_rate"],
-         str(words_perturbed_stats["avg_word_perturbed_perc"],
-         words_perturbed_stats["avg_word_perturbed"]
-        csvwriter.writerow = result_row
+        result_row = [attack_success_stats["successful_attacks"], 
+                      attack_success_stats["failed_attacks"],
+                      str(attack_success_stats["original_accuracy"]),
+                      str(attack_success_stats["attack_accuracy_perc"]),
+                      str(attack_success_stats["attack_success_rate"]),
+                      str(words_perturbed_stats["avg_word_perturbed_perc"]),
+                      words_perturbed_stats["avg_word_perturbed"]]
+        
+       
+        # name of csv file 
+        filename = "test_results.csv"
+
+        # writing to csv file 
+        with open(filename, 'w') as csvfile: 
+            # creating a csv writer object 
+            csvwriter = csv.writer(csvfile) 
+            # writing the results
+            csvwriter.writerow(result_row)
 
         summary_table_rows.append(
             ["Avg num queries:", attack_query_stats["avg_num_queries"]]
