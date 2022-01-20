@@ -116,7 +116,9 @@ class AttackLogManager:
             ],
         ]
         
-        result_row = [attack_success_stats["successful_attacks"], 
+        result_row = [model_name,
+                      attack_name,
+                      attack_success_stats["successful_attacks"], 
                       attack_success_stats["failed_attacks"],
                       str(attack_success_stats["original_accuracy"]),
                       str(attack_success_stats["attack_accuracy_perc"]),
