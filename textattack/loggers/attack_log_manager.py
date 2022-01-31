@@ -115,9 +115,9 @@ class AttackLogManager:
                 words_perturbed_stats["avg_word_perturbed"],
             ],
         ]
-        
-        result_row = [model_name,
-                      attack_name,
+        # the blanks will be model name and attack name later
+        result_row = ["_",
+                      "_",
                       attack_success_stats["successful_attacks"], 
                       attack_success_stats["failed_attacks"],
                       str(attack_success_stats["original_accuracy"]),
