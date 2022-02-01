@@ -125,6 +125,26 @@ GOAL_FUNCTION_CLASS_NAMES = {
 
 @dataclass
 class AttackArgs:
+    num_examples: int = 10
+    num_successful_examples: int = None
+    num_examples_offset: int = 0
+    attack_n: bool = False
+    shuffle: bool = False
+    query_budget: int = None
+    checkpoint_interval: int = None
+    checkpoint_dir: str = "checkpoints"
+    random_seed: int = 765  # equivalent to sum((ord(c) for c in "TEXTATTACK"))
+    parallel: bool = False
+    num_workers_per_device: int = 1
+    log_to_txt: str = None
+    log_to_csv: str = None
+    csv_coloring_style: str = "file"
+    log_to_visdom: dict = None
+    log_to_wandb: dict = None
+    disable_stdout: bool = False
+    silent: bool = False
+    enable_advance_metrics: bool = False
+    
     """Attack arguments to be passed to :class:`~textattack.Attacker`.
 
     Args:
@@ -186,26 +206,6 @@ class AttackArgs:
         enable_advance_metrics (:obj:`bool`, `optional`, defaults to :obj:`False`):
             Enable calculation and display of optional advance post-hoc metrics like perplexity, grammar errors, etc.
     """
-
-    num_examples: int = 10
-    num_successful_examples: int = None
-    num_examples_offset: int = 0
-    attack_n: bool = False
-    shuffle: bool = False
-    query_budget: int = None
-    checkpoint_interval: int = None
-    checkpoint_dir: str = "checkpoints"
-    random_seed: int = 765  # equivalent to sum((ord(c) for c in "TEXTATTACK"))
-    parallel: bool = False
-    num_workers_per_device: int = 1
-    log_to_txt: str = None
-    log_to_csv: str = None
-    csv_coloring_style: str = "file"
-    log_to_visdom: dict = None
-    log_to_wandb: dict = None
-    disable_stdout: bool = False
-    silent: bool = False
-    enable_advance_metrics: bool = False
 
     def __post_init__(self):
         if self.num_successful_examples:
