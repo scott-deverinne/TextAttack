@@ -4,7 +4,7 @@ Managing Attack Logs.
 """
 
 import csv
-
+from csv import writer
 from textattack.metrics.attack_metrics import (
     AttackQueries,
     AttackSuccessRate,
@@ -125,15 +125,20 @@ class AttackLogManager:
                       words_perturbed_stats["avg_word_perturbed"]]
         
        
+        
         # name of csv file 
         filename = "test_results.csv"
 
         # writing to csv file 
-        with open(filename, 'w') as csvfile: 
-            # creating a csv writer object 
-            csvwriter = csv.writer(csvfile) 
-            # writing the results
-            csvwriter.writerow(result_row)
+        with open(filename, 'a') as f_object:
+            #Pass this file object to csv.writer()
+            # and get a writer object
+            writer_object = writer(f_object)
+            # Pass the list as an argument into
+            # the writerow()
+            writer_object.writerow(result_row)
+            # Close the file object
+            f_object.close()
 
         summary_table_rows.append(
             ["Avg num queries:", attack_query_stats["avg_num_queries"]]
